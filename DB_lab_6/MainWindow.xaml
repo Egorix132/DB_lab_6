@@ -1,0 +1,49 @@
+﻿<Window x:Class="DB_lab_6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:DB_lab_6.Models"
+        xmlns:col="clr-namespace:System.Collections;assembly=System.Runtime"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel HorizontalAlignment="Left"  Grid.Row="0" Orientation="Horizontal">
+
+            <TabControl Width="auto">
+                <TabItem Header="Преподаватели">
+                    <TabItem.Content>
+                        <DataGrid x:Name="TeachersGrid" AutoGenerateColumns="False" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Имя"/>
+                                <DataGridTextColumn Binding="{Binding Experience}" Header="Стаж" />
+                                <DataGridTextColumn Binding="{Binding Title}" Header="Кафедра" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem Header="Кафедры">
+                    <TabItem.Content>
+                        <DataGrid x:Name="DepartmentGrid" AutoGenerateColumns="False" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Title}" Header="Название кафедры"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Факультет"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+        
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
+            <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
