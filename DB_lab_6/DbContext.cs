@@ -186,5 +186,59 @@ namespace DB_lab_6
                 }
             }
         }
+
+        public int? GetTeacherLessonCount(string teacherName)
+        {
+            string sql = $"SELECT COUNT(*) as count FROM Lessons as l " +
+                $"LEFT JOIN LessonTeachers as lt ON LessonId = l.id " +
+                $"LEFT JOIN Teachers as t ON TeacherId = t.id " +
+                $"WHERE Name LIKE '{teacherName}'";
+
+            SqlDataReader rdr = null;
+            try
+            {
+                SqlCommand command = new(sql, connection);
+                rdr = command.ExecuteReader();
+                rdr.Read();
+                string res = rdr["count"].ToString();
+                rdr.Close();
+                return string.IsNullOrWhiteSpace(res) ? null : int.Parse(res);
+            }
+            catch (Exception e)
+            {
+                if (rdr != null && !rdr.IsClosed)
+                {
+                    rdr.Close();
+                }
+                return null;
+            }
+        }
+
+        public int? GetGroupSubjectLessonCount(string groupName, string subjectTitle)
+        {
+            string sql = $"SELECT COUNT(*) as count FROM Lessons as l " +
+                $"LEFT JOIN Groups as g ON GroupId = g.id " +
+                $"LEFT JOIN Subjects as s ON SubjectId = s.id " +
+                $"WHERE Name LIKE '{groupName}' AND Title LIKE '{subjectTitle}'";
+
+            SqlDataReader rdr = null;
+            try
+            {
+                SqlCommand command = new(sql, connection);
+                rdr = command.ExecuteReader();
+                rdr.Read();
+                string res = rdr["count"].ToString();
+                rdr.Close();
+                return string.IsNullOrWhiteSpace(res) ? null : int.Parse(res);
+            }
+            catch (Exception e)
+            {
+                if (rdr != null && !rdr.IsClosed)
+                {
+                    rdr.Close();
+                }
+                return null;
+            }
+        }
     }
 }

@@ -112,5 +112,26 @@ namespace DB_lab_6
         {
             TeachersGrid.UnselectAll();
         }
+
+        private void TeacherLessonCountButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TeacherLessonCountTextbox.Text))
+            {
+                return;
+            }
+            int? count = context.GetTeacherLessonCount(TeacherLessonCountTextbox.Text);
+            TeacherLessonCount.Content = count;
+        }
+
+        private void GroupSubjectLessonCountButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(GroupLessonCountTextbox.Text)
+                || string.IsNullOrWhiteSpace(SubjectLessonCountTextbox.Text))
+            {
+                return;
+            }
+            int? count = context.GetGroupSubjectLessonCount(GroupLessonCountTextbox.Text, SubjectLessonCountTextbox.Text);
+            GroupSubjectLessonCount.Content = count;
+        }
     }
 }

@@ -37,6 +37,28 @@
                         </DataGrid>
                     </TabItem.Content>
                 </TabItem>
+                <TabItem Header="Количество занятий у преподавателя">
+                    <StackPanel HorizontalAlignment="Left" Width="366">
+                        <Label Content="Имя преподавателя"/>
+                        <TextBox x:Name="TeacherLessonCountTextbox" Margin="0 0 0 10" />
+                        <Button x:Name="TeacherLessonCountButton" Content="Вычислить" Click="TeacherLessonCountButton_Click" />
+                        <Label Content="Количество занятий"/>
+                        <Label x:Name="TeacherLessonCount" />
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="Количество занятий у группы по определённому предмету">
+                    <StackPanel HorizontalAlignment="Left" Width="366">
+                        <Label Content="Название группы"/>
+                        <TextBox x:Name="GroupLessonCountTextbox" Margin="0 0 0 10" />
+                        <Label Content="Название предмета"/>
+                        <TextBox x:Name="SubjectLessonCountTextbox" Margin="0 0 0 10" />
+                        <Button x:Name="GroupSubjectLessonCountButton" Content="Вычислить" Click="GroupSubjectLessonCountButton_Click" />
+                        <Label Content="Количество занятий"/>
+                        <Label x:Name="GroupSubjectLessonCount" />
+                    </StackPanel>
+                </TabItem>
+
             </TabControl>
 
         </StackPanel>
